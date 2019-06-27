@@ -1,0 +1,19 @@
+<button id="callAPIButton">Call API!</button>
+
+<script>
+    const button = document.getElementById('callAPIButton');
+    button.addEventListener('click', function (e) {
+        console.log('button was clicked');
+        fetch('/crossdomaincall', { method: 'POST' })
+            .then(function (response) {
+                if (response.ok) {
+                    console.log('Call succeeded');
+                    return;
+                }
+                throw new Error('Call failed.');
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    });
+</script>
